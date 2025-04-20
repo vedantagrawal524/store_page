@@ -1,20 +1,46 @@
 @import "tailwindcss";
-
-@tailwind utilities;
-
 @layer utilities {
   .section-min-height {
     min-height: calc(100vh - 68px);
   }
+  .toggle-btn {
+    @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent [&>div]:rotate-[720deg]
 }
-@media (min-width: 1020px) {
+}
+@media  (min-aspect-ratio: 3/2){
   .widescreen\:section-min-height {
     min-height: calc(100vh - 68px);
   }
 }
 
-@media (max-height: 425px) and (min-aspect-ratio: 7/4) {
+@media  (min-aspect-ratio: 13/20) {
   .tallscreen\:section-min-height {
     min-height: calc(100vh - 68px);
+  }
+}
+
+@layer base {
+  :root {
+    --color-papayawhip: 255 239 213;
+    --color-papayawhip-light: 254 244 228;
+    --color-papayawhip-dark: 254 229 188;
+  }
+}
+
+@keyframes open-menu {
+  0% {
+    transform: scaleY(0);
+  }
+  80% {
+    transform: scaleY(1.2);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@layer utilities {
+  .animate-open-menu {
+    animation: open-menu 0.5s ease-in-out forwards;
   }
 }
